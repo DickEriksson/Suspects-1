@@ -1,0 +1,112 @@
+html{
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#video {
+    position: fixed;
+    top: -45px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
+}
+
+.header{
+    position: relative;
+    text-align: center;
+    min-height: 90.3%; 
+    width: 100%;
+}
+
+h1{
+    font-size: 9em;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background: red;
+    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#navbar {
+    padding: 0;
+    width: 100%;
+    height: 10%;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgb(226, 226, 226)
+}
+
+.logo{
+    position: absolute;
+    right: 20px;
+    height: 5em;
+}
+
+#navbar a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    width: 200px;
+    height: 60%;
+    margin-top: 25px;
+    text-decoration: none;
+    font-size: 1em;
+    border-bottom: 5px solid #fff;
+}
+
+#navbar a:hover {
+    color: #838383;
+}
+
+#navbar a.active {
+    color: black;
+    border-bottom: 5px solid black;
+}
+
+.content{
+    position: relative;
+    background-color: #fff;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+}
+
+.karta{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.footer{
+    background-color: rgb(117, 117, 117);
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    padding: 0;
+}
