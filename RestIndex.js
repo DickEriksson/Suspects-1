@@ -1,5 +1,6 @@
-
-
+                // Döpt om namnen på varje kategori för att enkelt kunna skapa variablar av dem, orgianlkategorier är följande: 
+                // Månad, Total restaurang-försäljning, Hotell-restauranger, Caféer, Snabb-mats-restauranger, Lunch-och kvälls-restauranger
+                // Trafiknära restauranger, Nöjes-restauranger, Personal-restauranger
 var list = [
     {
 "manad":"2008K01",
@@ -444,8 +445,8 @@ var list = [
 ];
 
 
-var total = []
-var hotell = []
+var total = []        // Skapar tomma variabler för vaje kategori i ovanstående lista. 
+var hotell = []       // Fylls i "for-loopen" nedanför på med data för respektive kategori. 
 var manadlist = []
 var cafe = []
 var snabbmat = []
@@ -454,11 +455,11 @@ var trafiknara = []
 var nojes = []
 var personal = []
 
-for (var i = 0; i < list.length; i++) {
-    manadlist.push(list[i].manad); 
-    hotell.push(list[i].hotell);  
-    total.push(list[i].totalRestaurang);
-    cafe.push(list[i].cafe);
+for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List. 
+    manadlist.push(list[i].manad);          
+    hotell.push(list[i].hotell);            // Här skapas nya listor med unika värden för varje kategori från Variabeln list, som sedan matas in i respektive variabel för varje kategori. 
+    total.push(list[i].totalRestaurang);    // Kategorier är: Hotell-restauranger, Total restaurang-försäljning, caféer,                                            
+    cafe.push(list[i].cafe);                // snabbmats-restauranger, Lunch och kvälls-restauranger, Nöjes-restauranger och personal-restauranger.
     snabbmat.push(list[i].snabbmat);
     lunchkvall.push(list[i].LunchKvall);
     nojes.push(list[i].noje);
@@ -468,27 +469,33 @@ for (var i = 0; i < list.length; i++) {
 
 
 
-  var HotellChart = {
+  var HotellChart = { // Hotell-restauranger linjediagram
     x: manadlist,
     y: hotell,
     mode: 'line',
   };
 
-  var TotalChart = {
+  var TotalChart = { // Total restaurang försäljning linjediagram
     x: manadlist,
     y: total,
     mode: 'line',
   };
 
-  var cafeChart = {
+  var cafeChart = { // Caféer linjediagram
     x: manadlist,
     y: cafe,
     mode: 'line',
   };
 
-  var snabbmatChart = {
+  var snabbmatChart = { // Snabbamtsrestauranger linjediagram
     x: manadlist,
     y: snabbmat,
+    mode: 'line',
+  };
+
+  var LunchKvallChart = { // Lunch och kvällrestauranger linjediagram
+    x: manadlist,
+    y: lunchkvall,
     mode: 'line',
   };
 
@@ -496,10 +503,12 @@ for (var i = 0; i < list.length; i++) {
   var HotellLine = [HotellChart];
   var TotalLine = [TotalChart];
   var CafeLine = [cafeChart];
+  var LunchkvallLine = [LunchKvallChart];
 
   Plotly.newPlot("Cafe", CafeLine, {});
   Plotly.newPlot("Hotell", HotellLine, {});
   Plotly.newPlot("Total", TotalLine, {});
   Plotly.newPlot("Snabbmat", SnabbmatLine, {});
+  Plotly.newPlot("Lunchkvall", LunchkvallLine, {});
 
 
