@@ -4,48 +4,35 @@
     <meta name="viewport" content="width=device-width,
         initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="css/index.css" />
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300" rel="stylesheet" />
     <title> EN TEMPORÄR TITLE </title>
 </head>
 <body>
     <div class="header" id="c"> 
-        <div id="test">
-            <video autoplay muted loop id="video">
-                <source src="img/header.mp4" type="video/mp4">
-            </video>
-
-             
-            <h1>Unicorn Co</h1>
-        </div>
+        <video autoplay muted loop id="video">
+            <source src="img/header.mp4" type="video/mp4">
+        </video>   
+        <h1>Unicorn Co.</h1>
     </div>
     <div id="navbar">
-            <a class="btn active" id="home" href="#Home">Home</a>
-            <a class="btn" id="karta" href="#Karta">Karta</a>
-            <a class="btn" href="#Graf1">Graf1</a>
-            <a class="btn" href="#Graf2">Graf2</a>
-            <img class="logo" src="IMG/logo.png">
+        <a class="btn active" id="home" href="#Hem">Hem</a>
+        <a class="btn" id="karta" href="#Etableringsorter">Etableringsorter</a>
+        <a class="btn" id="rapport" href="#Trendrapport">Trendrapport</a>
+        <a class="btn" href="#Graf2">Graf2</a>
+        <img class="logo" src="IMG/logo.png">
     </div>
-<!--
-    <div class="content">
-        <div class="container">
-            <iframe class="karta" src="sverigekarta.html"></iframe>
-        </div>
-        
-    </div>
-
-    <div class="footer">
-
-    </div> -->
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
     $('#home').on('click', function() {
-    document.getElementById("c").innerHTML='<video autoplay muted loop id="video"><source src="img/header.mp4" type="video/mp4"></video><h1>Unicorn Co</h1>';
+    document.getElementById("c").innerHTML='<video autoplay muted loop id="video"><source src="img/header.mp4" type="video/mp4"></video><h1>Unicorn Co.</h1>';
     })
     $('#karta').on('click', function() {
-  document.getElementById("c").innerHTML='<iframe class="karta" src="sverigekarta.html"></iframe>';
-})
-
+    document.getElementById("c").innerHTML='<div id="titlebar">Möjliga etableringsorter för Unicorn Co.</div><iframe class="karta" src="sverigekarta.html"></iframe>';
+    })  
+    $('#rapport').on('click', function() {
+    document.getElementById("c").innerHTML='<div id="titlebar">Dryck- och mattrender 2019</div><object class="rapport-cont" data="rapport.html"></object>';
+    })  
 </script>
 <script>
     window.onscroll = function () { myFunction() };
