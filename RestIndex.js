@@ -453,7 +453,7 @@ var snabbmat = []
 var lunchkvall = []
 var trafiknara = []
 var nojes = []
-var personal = []
+var personals = []
 
 for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List. 
     manadlist.push(list[i].manad);          
@@ -463,9 +463,10 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
     snabbmat.push(list[i].snabbmat);
     lunchkvall.push(list[i].LunchKvall);
     nojes.push(list[i].noje);
-    personal.push(list[i].personal);
+    personals.push(list[i].personal);
 
 }
+ 
 
 
 
@@ -499,16 +500,33 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
     mode: 'line',
   };
 
+  var NojesChart = { // Nöjes-restauranger linjediagram
+    x: manadlist,
+    y: nojes,
+    mode: 'line',
+  };
+
+  var PersonalChart = { // Personal-restauranger linjediagram
+    x: manadlist,
+    y: personals,
+    mode: 'line',
+  };
+
+
   var SnabbmatLine = [snabbmatChart];
   var HotellLine = [HotellChart];
   var TotalLine = [TotalChart];
   var CafeLine = [cafeChart];
   var LunchkvallLine = [LunchKvallChart];
+  var NojesLine = [NojesChart];
+  var personalLine = [personal];
 
   Plotly.newPlot("Cafe", CafeLine, {});
   Plotly.newPlot("Hotell", HotellLine, {});
   Plotly.newPlot("Total", TotalLine, {});
   Plotly.newPlot("Snabbmat", SnabbmatLine, {});
   Plotly.newPlot("Lunchkvall", LunchkvallLine, {});
+  Plotly.newPlot("Nojes", NojesLine, {});
+  Plotly.newPlot("Personal", personalLine, {});
 
 
