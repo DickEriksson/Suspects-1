@@ -486,7 +486,27 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
   var cafeChart = { // Caféer linjediagram
     x: manadlist,
     y: cafe,
+    type: "scatter",
+    name: "(%)",
     mode: 'line',
+    showlegend: true,
+    hoverinfo: "y+name",
+      hoverlabel: {
+        bgcolor: "white",
+        bordercolor: "Black",
+          font:{
+            family: "old stanard, serif",
+            color: "black", 
+        }
+
+    },
+    line: {
+      color: "Blue",
+      width: 1.5,
+      opacity: 0.1,
+      }
+      
+    
   };
 
   var snabbmatChart = { // Snabbamtsrestauranger linjediagram
@@ -508,7 +528,6 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
   };
 
 
-
   var SnabbmatLine = [snabbmatChart];
   var HotellLine = [HotellChart];
   var TotalLine = [TotalChart];
@@ -516,10 +535,32 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
   var LunchkvallLine = [LunchKvallChart];
   var NojesLine = [NojesChart]
 
-  
-  
+  var layout = {
+    title: "Caf\xE9er",
+    autosize: false,
+	  height: 400,
+	  width: 800,
+    xaxis:    
+    {
+      tickvals:['2008K04', '2009K04', '2010K04', '2011K04', '2012K04', '2013K04','2014K04', '2015K04', '2016K04', '2017K04', '2018K04'],
+          ticktext : ['Q4 2008', 'Q4 2009', 'Q4 2010', 'Q4 2011', 'Q4 2012', 'Q4 2013', 'Q4 2014', 'Q4 2015', 'Q4 2016', 'Q4 2017', 'Q4 2018'],
+          color: "black",
+          tickangle: 45,
+          showticklabels: true,
+          tickfont: {
+            family: "Old Standard, serif",
+            size: 14,
+            
+          }
 
-  Plotly.newPlot("Cafe", CafeLine, {});
+    },
+    
+          
+  }
+
+
+
+  Plotly.newPlot("Cafe", CafeLine, layout);
   Plotly.newPlot("Hotell", HotellLine, {});
   Plotly.newPlot("Total", TotalLine, {});
   Plotly.newPlot("Snabbmat", SnabbmatLine, {});
