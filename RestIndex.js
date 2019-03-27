@@ -470,6 +470,7 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
 
 
 
+
   var HotellChart = { // Hotell-restauranger linjediagram
     x: manadlist,
     y: hotell,
@@ -506,11 +507,6 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
     mode: 'line',
   };
 
-  var PersonalChart = { // Personal-restauranger linjediagram
-    x: manadlist,
-    y: personals,
-    mode: 'line',
-  };
 
 
   var SnabbmatLine = [snabbmatChart];
@@ -518,15 +514,16 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
   var TotalLine = [TotalChart];
   var CafeLine = [cafeChart];
   var LunchkvallLine = [LunchKvallChart];
-  var NojesLine = [NojesChart];
-  var personalLine = [personal];
+  var NojesLine = [NojesChart]
+
+  
+  
 
   Plotly.newPlot("Cafe", CafeLine, {});
   Plotly.newPlot("Hotell", HotellLine, {});
   Plotly.newPlot("Total", TotalLine, {});
   Plotly.newPlot("Snabbmat", SnabbmatLine, {});
-  Plotly.newPlot("Lunchkvall", LunchkvallLine, {});
-  Plotly.newPlot("Nojes", NojesLine, {});
-  Plotly.newPlot("Personal", personalLine, {});
+  Plotly.newPlot("LK", LunchkvallLine, {});
+  Plotly.newPlot("NojesDiv", NojesLine, {});
 
 
