@@ -20,3 +20,4 @@ Inlämningsuppgift grupparbete BI-programmeringsspråk
 **research restaurangskoncept - mat o dryck.docx** Research om trender i branschen **Utdaterat**  
 **sverigekarta .html .jpg** Autogenererad av vår python kod  
 **väder .xlsx .csv .json** Väderdata från SMHI  
+**Dokumentation Unicorn co.docx** Dokumentation av projektet
