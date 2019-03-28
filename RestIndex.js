@@ -466,6 +466,18 @@ for (var i = 0; i < data.length; i++) {     // Skapar en lista av variabeln Data
 
 }
  
+function cumulative(inVar) {
+  var outVar = []
+
+  for (var i = 0; i < inVar.length; i++) {
+    if (i == 0) {
+      outVar[i] = inVar[i];
+    } else {
+      outVar[i] = outVar[i-1] + inVar[i];
+    }
+  }
+  return outVar
+}
 
 
 var barChart = [
@@ -572,6 +584,8 @@ function funclayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("LK", [graf(lunchkvall, "LKDiagram")], funclayout("Lunch och kv\xE4llsrestauranger"));
   Plotly.newPlot("Pers", [graf(personals, "PersonalDiagram")], funclayout("Personalrestauranger"));
   Plotly.newPlot("NojesDiv", [graf(nojes, "nojesDiagram")], funclayout("N\xF6jesrestauranger"));
+
+  Plotly.newPlot("cumCafe", [graf(cumulative(cafen), "cumCafediagram")], funclayout("cumCaf\xE9er") );
 
 
 
