@@ -487,10 +487,11 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
     x: manadlist,
     y: cafe,
     type: "scatter",
-    name: "(%)",
+    name: "Caf\xE9er",
     mode: 'line',
     showlegend: true,
-    hoverinfo: "y+name",
+    hoverinfo: "y+text",
+    hovertext: "(%)",
       hoverlabel: {
         bgcolor: "white",
         bordercolor: "Black",
@@ -501,7 +502,7 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
 
     },
     line: {
-      color: "Blue",
+      color: "#3186cc",
       width: 1.5,
       opacity: 0.1,
       }
@@ -552,9 +553,18 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
             size: 14,
             
           }
-
     },
-    
+    yaxis: {
+      title: "F\xF6r\xE4ndring (%) mot f\xF6eg\xE5ende kvartal",
+      font: "old stanard, serif",
+      color: "Black",
+      bgcolor: "grey",
+      tickfont: {
+        family: "Old Standard, serif",
+        size: 14,
+      }
+
+    }
           
   }
 
