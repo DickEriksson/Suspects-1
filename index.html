@@ -17,6 +17,7 @@
     <div id="navbar">
         <a class="btn active" id="home" href="#Hem">Hem</a>
         <a class="btn" id="karta" href="#Etableringsorter">Etableringsorter</a>
+        <a class="btn" id="graphs" href="#Restaurangindex">Restaurangindex</a>
         <a class="btn" id="rapport" href="#Trendrapport">Trendrapport</a>
         <a class="btn" id="sammanfattning" href="#Sammanfattning">Sammanfattning</a>
         <img class="logo" src="IMG/logo.png">
@@ -29,7 +30,10 @@
     })
     $('#karta').on('click', function() {
     document.getElementById("c").innerHTML='<div id="titlebar">Möjliga etableringsorter för Unicorn Co.</div><iframe class="karta" src="sverigekarta.html"></iframe>';
-    })  
+    }) 
+    $('#graphs').on('click', function() {
+    document.getElementById("c").innerHTML='<div id="titlebar">Restaurangindex</div><object class="rapport-cont" data="graphs.html"></object>';
+    })
     $('#rapport').on('click', function() {
     document.getElementById("c").innerHTML='<div id="titlebar">Dryck- och mattrender 2019</div><object class="rapport-cont" data="rapport.html"></object>';
     })
