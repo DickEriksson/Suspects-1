@@ -469,8 +469,8 @@ for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List
  
 
 
-function graf(ydata, namedata){
-  var cafeChart = { // Caféer linjediagram
+function graf(ydata, namedata){ // Funktion för att fylla Diagram med värden. 
+  var ChartMaster = { // Caféer linjediagram
     x: manadlist,
     y: ydata,
     type: "scatter",
@@ -496,43 +496,10 @@ function graf(ydata, namedata){
       
       
   }
-  return cafeChart;
+  return ChartMaster;
 }
 
-
-  var layoutGrund = {
-    autosize: false,
-	  height: 600,
-    width: 800,
-    xaxis:    
-    {
-      tickvals:['2008K04', '2009K04', '2010K04', '2011K04', '2012K04', '2013K04','2014K04', '2015K04', '2016K04', '2017K04', '2018K04'],
-          ticktext : ['Q4 2008', 'Q4 2009', 'Q4 2010', 'Q4 2011', 'Q4 2012', 'Q4 2013', 'Q4 2014', 'Q4 2015', 'Q4 2016', 'Q4 2017', 'Q4 2018'],
-          color: "black",
-          showgrid: false,
-          tickangle: 45,
-          showticklabels: true,
-          tickfont: {
-            family: "Old Standard, serif",
-            size: 14,
-            
-          }
-    },
-    yaxis: {
-      title: "F\xF6r\xE4ndring (%) mot samma kvrtal f\xF6eg\xE5ende \xE5r",
-      font: "old stanard, serif",
-      color: "Black",
-      bgcolor: "grey",
-      tickfont: {
-        family: "Old Standard, serif",
-        size: 14,
-      }
-
-    }
-          
-  }
-
-function funclayout(supertitle){
+function funclayout(supertitle){ // Funktion för layout av diagram
   var layout = {
     title: supertitle,
     autosize: false,
@@ -572,11 +539,11 @@ return layout;
 
 
   Plotly.newPlot("Cafe", [graf(cafe, "cafediagram")], funclayout("Caf\xE9er") );
-  Plotly.newPlot("Hotell", [graf(hotell, "HotellDiagram")], funclayout("Hotell-restauranger"));
-  Plotly.newPlot("Total", [graf(total, "TotalDiagram")], funclayout("Total Restaurang-försäljning"));
-  Plotly.newPlot("Snabbmat", [graf(snabbmat, "snabbmatDiagram")], funclayout("Snabbmats-restauranger"));
-  Plotly.newPlot("LK", [graf(lunchkvall, "LKDiagram")], funclayout("Lunch och kvälls-restauranger"));
-  Plotly.newPlot("NojesDiv", [graf(nojes, "nojesDiagram")], funclayout("Nöjes-restauranger"));
+  Plotly.newPlot("Hotell", [graf(hotell, "HotellDiagram")], funclayout("Hotellrestauranger"));
+  Plotly.newPlot("Total", [graf(total, "TotalDiagram")], funclayout("Total Restaurangf\xF6rs\xE4ljning"));
+  Plotly.newPlot("Snabbmat", [graf(snabbmat, "snabbmatDiagram")], funclayout("Snabbmatsrestauranger"));
+  Plotly.newPlot("LK", [graf(lunchkvall, "LKDiagram")], funclayout("Lunch och kv\xE4llsrestauranger"));
+  Plotly.newPlot("NojesDiv", [graf(nojes, "nojesDiagram")], funclayout("N\xF6jesrestauranger"));
 
 
 
@@ -589,7 +556,7 @@ return layout;
 
 
 
-
+//                                                               ----------Städat bort kod som inte används--------
 
 
   // var HotellChart = { // Hotell-restauranger linjediagram
@@ -629,3 +596,36 @@ return layout;
   // var LunchkvallLine = [LunchKvallChart];
   // var NojesLine = [NojesChart]
 
+
+
+  // var layoutGrund = {
+  //   autosize: false,
+	//   height: 600,
+  //   width: 800,
+  //   xaxis:    
+  //   {
+  //     tickvals:['2008K04', '2009K04', '2010K04', '2011K04', '2012K04', '2013K04','2014K04', '2015K04', '2016K04', '2017K04', '2018K04'],
+  //         ticktext : ['Q4 2008', 'Q4 2009', 'Q4 2010', 'Q4 2011', 'Q4 2012', 'Q4 2013', 'Q4 2014', 'Q4 2015', 'Q4 2016', 'Q4 2017', 'Q4 2018'],
+  //         color: "black",
+  //         showgrid: false,
+  //         tickangle: 45,
+  //         showticklabels: true,
+  //         tickfont: {
+  //           family: "Old Standard, serif",
+  //           size: 14,
+            
+  //         }
+  //   },
+  //   yaxis: {
+  //     title: "F\xF6r\xE4ndring (%) mot samma kvrtal f\xF6eg\xE5ende \xE5r",
+  //     font: "old stanard, serif",
+  //     color: "Black",
+  //     bgcolor: "grey",
+  //     tickfont: {
+  //       family: "Old Standard, serif",
+  //       size: 14,
+  //     }
+
+  //   }
+          
+  // }
