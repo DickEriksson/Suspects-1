@@ -1,7 +1,7 @@
                 // Döpt om namnen på varje kategori för att enkelt kunna skapa variablar av dem, orgianlkategorier är följande: 
-                // Månad, Total restaurang-försäljning, Hotell-restauranger, Caféer, Snabb-mats-restauranger, Lunch-och kvälls-restauranger
+                // Månad, Total restaurang-försäljning, Hotell-restauranger, Caféer, Snabbmats-restauranger, Lunch- och kvälls-restauranger
                 // Trafiknära restauranger, Nöjes-restauranger, Personal-restauranger
-var list = [
+var data = [
     {
 "manad":"2008K01",
 "totalRestaurang":5.0,
@@ -443,90 +443,210 @@ var list = [
 "noje":-0.5,
 "personal":-8.9}
 ];
-
-
-var total = []        // Skapar tomma variabler för vaje kategori i ovanstående lista. 
+ 
+var total = []        // Skapar variabler med tomma listor, för vaje kategori i ovanstående lista. 
 var hotell = []       // Fylls i "for-loopen" nedanför på med data för respektive kategori. 
 var manadlist = []
-var cafe = []
+var cafen = []
 var snabbmat = []
 var lunchkvall = []
 var trafiknara = []
 var nojes = []
 var personals = []
 
-for (var i = 0; i < list.length; i++) {     // Skapar en lista av variabeln List. 
-    manadlist.push(list[i].manad);          
-    hotell.push(list[i].hotell);            // Här skapas nya listor med unika värden för varje kategori från Variabeln list, som sedan matas in i respektive variabel för varje kategori. 
-    total.push(list[i].totalRestaurang);    // Kategorier är: Hotell-restauranger, Total restaurang-försäljning, caféer,                                            
-    cafe.push(list[i].cafe);                // snabbmats-restauranger, Lunch och kvälls-restauranger, Nöjes-restauranger och personal-restauranger.
-    snabbmat.push(list[i].snabbmat);
-    lunchkvall.push(list[i].LunchKvall);
-    nojes.push(list[i].noje);
-    personals.push(list[i].personal);
+for (var i = 0; i < data.length; i++) {     // Skapar en lista av variabeln Data. 
+  manadlist.push(data[i].manad);          
+  hotell.push(data[i].hotell);            // Här skapas nya listor med unika värden för varje kategori från Variabeln data, som sedan matas in i respektive variabel för varje kategori. 
+  total.push(data[i].totalRestaurang);    // Kategorier är: Hotell-restauranger, Total restaurang-försäljning, caféer,                                            
+  cafen.push(data[i].cafe);                // snabbmats-restauranger, Lunch och kvälls-restauranger, Nöjes-restauranger och personal-restauranger.
+  snabbmat.push(data[i].snabbmat);
+  lunchkvall.push(data[i].LunchKvall);
+  nojes.push(data[i].noje);
+  personals.push(data[i].personal);
 
 }
  
 
 
+var barChart = [
+  {
+    y:  [/*'Total restaurangförsäljning',*/ 'Hotellrestauranger', 'Caf\xE9er', "Snabbmatsrestauranger", "Lunch och kv\xE4llsrestauranger", "trafiknara", "nojes", "personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
+    x: [/*9797,*/ 1044, 627, 1190, 4532, 695, 1304, 405],
+    type: 'bar',
+    orientation: 'h',
+    
+    
+  }
+];
 
-  var HotellChart = { // Hotell-restauranger linjediagram
+var barLayout = {
+  height: 400,
+  width: 600,
+
+  xaxis:{
+    autorange:'reversed'
+},
+yaxis:{
+  font: {
+    size: 1,
+
+  },  
+  side: "right",
+}
+}
+
+Plotly.newPlot('myDiv', barChart, barLayout);
+
+function graf(ydata, namedata) {            // Funktion för att fylla Diagram med värden. 
+  var ChartMaster = { 
     x: manadlist,
-    y: hotell,
+    y: ydata,
+    type: "scatter",
+    name: namedata,
     mode: 'line',
-  };
+    showlegend: false,
+    hoverinfo: "y+text",
+    hovertext: "(%)",
+    hoverlabel: {
+      bgcolor: "white",
+      bordercolor: "Black",
+      font:{
+        family: "Old Standard, serif",
+        color: "black", 
+      }
+    },
+    line: {
+      color: "#3186cc",
+      width: 3,   
+    }                  
+  }
+  return ChartMaster;
+}
 
-  var TotalChart = { // Total restaurang försäljning linjediagram
-    x: manadlist,
-    y: total,
-    mode: 'line',
-  };
+function funclayout(supertitle){            // Funktion för layout av diagram
+  var layout = {
+    title: supertitle,
+    autosize: false,
+	  height: 600,
+	  width: 800,
+    xaxis: {
+      tickvals:['2008K04', '2009K04', '2010K04', '2011K04', '2012K04', '2013K04','2014K04', '2015K04', '2016K04', '2017K04', '2018K04'],
+      ticktext : ['Q4 2008', 'Q4 2009', 'Q4 2010', 'Q4 2011', 'Q4 2012', 'Q4 2013', 'Q4 2014', 'Q4 2015', 'Q4 2016', 'Q4 2017', 'Q4 2018'],
+      color: "black",
+      showgrid: false,
+      tickangle: 45,
+      showticklabels: true,
+      tickfont: {
+        family: "Old Standard, serif",
+        size: 14,           
+      }
+    },
+    yaxis: {
+      title: "F\xF6r\xE4ndring (%) mot samma kvrtal f\xF6eg\xE5ende \xE5r",
+      font: "old stanard, serif",
+      color: "Black",
+      showgrid: true,
+      bgcolor: "grey",
+      tickfont: {
+        family: "Old Standard, serif",
+        size: 14,
+      }
+    }         
+  }
 
-  var cafeChart = { // Caféer linjediagram
-    x: manadlist,
-    y: cafe,
-    mode: 'line',
-  };
-
-  var snabbmatChart = { // Snabbamtsrestauranger linjediagram
-    x: manadlist,
-    y: snabbmat,
-    mode: 'line',
-  };
-
-  var LunchKvallChart = { // Lunch och kvällrestauranger linjediagram
-    x: manadlist,
-    y: lunchkvall,
-    mode: 'line',
-  };
-
-  var NojesChart = { // Nöjes-restauranger linjediagram
-    x: manadlist,
-    y: nojes,
-    mode: 'line',
-  };
-
-  var PersonalChart = { // Personal-restauranger linjediagram
-    x: manadlist,
-    y: personals,
-    mode: 'line',
-  };
-
-
-  var SnabbmatLine = [snabbmatChart];
-  var HotellLine = [HotellChart];
-  var TotalLine = [TotalChart];
-  var CafeLine = [cafeChart];
-  var LunchkvallLine = [LunchKvallChart];
-  var NojesLine = [NojesChart];
-  var personalLine = [personal];
-
-  Plotly.newPlot("Cafe", CafeLine, {});
-  Plotly.newPlot("Hotell", HotellLine, {});
-  Plotly.newPlot("Total", TotalLine, {});
-  Plotly.newPlot("Snabbmat", SnabbmatLine, {});
-  Plotly.newPlot("Lunchkvall", LunchkvallLine, {});
-  Plotly.newPlot("Nojes", NojesLine, {});
-  Plotly.newPlot("Personal", personalLine, {});
+  return layout;
+}
 
 
+  Plotly.newPlot("Cafe", [graf(cafen, "cafediagram")], funclayout("Caf\xE9er") );
+  Plotly.newPlot("Hotell", [graf(hotell, "HotellDiagram")], funclayout("Hotellrestauranger"));
+  Plotly.newPlot("Total", [graf(total, "TotalDiagram")], funclayout("Total restaurangf\xF6rs\xE4ljning"));
+  Plotly.newPlot("Snabbmat", [graf(snabbmat, "snabbmatDiagram")], funclayout("Snabbmatsrestauranger"));
+  Plotly.newPlot("LK", [graf(lunchkvall, "LKDiagram")], funclayout("Lunch och kv\xE4llsrestauranger"));
+  Plotly.newPlot("Pers", [graf(personals, "PersonalDiagram")], funclayout("Personalrestauranger"));
+  Plotly.newPlot("NojesDiv", [graf(nojes, "nojesDiagram")], funclayout("N\xF6jesrestauranger"));
+
+
+
+
+
+
+
+
+
+
+
+
+//                                                               ----------Städat bort kod som inte används--------
+
+
+  // var HotellChart = { // Hotell-restauranger linjediagram
+  //   x: manadlist,
+  //   y: hotell,
+  //   mode: 'line',
+  // };
+
+  // var TotalChart = { // Total restaurang försäljning linjediagram
+  //   x: manadlist,
+  //   y: total,
+  //   mode: 'line',
+  // };
+    // var snabbmatChart = { // Snabbamtsrestauranger linjediagram
+  //   x: manadlist,
+  //   y: snabbmat,
+  //   mode: 'line',
+  // };
+
+  // var LunchKvallChart = { // Lunch och kvällrestauranger linjediagram
+  //   x: manadlist,
+  //   y: lunchkvall,
+  //   mode: 'line',
+  // };
+
+  // var NojesChart = { // Nöjes-restauranger linjediagram
+  //   x: manadlist,
+  //   y: nojes,
+  //   mode: 'line',
+  // };
+
+  
+  //var SnabbmatLine = [snabbmatChart];
+  //var HotellLine = [HotellChart];
+  // var TotalLine = [TotalChart];
+  //var CafeLine = [graf(cafe, "Dickslinger")];
+  // var LunchkvallLine = [LunchKvallChart];
+  // var NojesLine = [NojesChart]
+
+
+
+  // var layoutGrund = {
+  //   autosize: false,
+	//   height: 600,
+  //   width: 800,
+  //   xaxis:    
+  //   {
+  //     tickvals:['2008K04', '2009K04', '2010K04', '2011K04', '2012K04', '2013K04','2014K04', '2015K04', '2016K04', '2017K04', '2018K04'],
+  //         ticktext : ['Q4 2008', 'Q4 2009', 'Q4 2010', 'Q4 2011', 'Q4 2012', 'Q4 2013', 'Q4 2014', 'Q4 2015', 'Q4 2016', 'Q4 2017', 'Q4 2018'],
+  //         color: "black",
+  //         showgrid: false,
+  //         tickangle: 45,
+  //         showticklabels: true,
+  //         tickfont: {
+  //           family: "Old Standard, serif",
+  //           size: 14,
+            
+  //         }
+  //   },
+  //   yaxis: {
+  //     title: "F\xF6r\xE4ndring (%) mot samma kvrtal f\xF6eg\xE5ende \xE5r",
+  //     font: "old stanard, serif",
+  //     color: "Black",
+  //     bgcolor: "grey",
+  //     tickfont: {
+  //       family: "Old Standard, serif",
+  //       size: 14,
+  //     }
+
+  //   }
+          
+  // }
