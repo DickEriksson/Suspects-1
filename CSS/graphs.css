@@ -9,18 +9,14 @@
 .left, .right{
     width: 750px; 
     height: auto;
-}
-
-.left{
+    margin: 0 auto;
     float: left;
+    display: none;
 }
 
-.right{
-    float: right;
-}
 
 .barcharts{
-    width: 750px; 
+    width: 1000px; 
     height: auto;
     clear: both;
 }

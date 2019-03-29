@@ -558,6 +558,8 @@ function funclayout(supertitle){            // Funktion för layout av diagram
       }
     },
     yaxis: {
+      fixedrange: true,
+      range: [-13, 15],
       title: "F\xF6r\xE4ndring (%) mot samma kvartal f\xF6eg\xE5ende \xE5r",
       titlefont: {
         family: "'Ubuntu', Old Standard, serif",

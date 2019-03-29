@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/graphs.css" />
+
+</head>
+
+<body>
+
+<div class="container" id="contactform">
+    Café<input type="checkbox" id="showCafe" onclick="showCafe()">
+    Hotell<input type="checkbox" id="showHotell" onclick="showHotell()">
+   <!--<input type="checkbox" class="read-more-state" id="post" />-->
+    <div class="read-more-wrap">
+        <div id="Cafe" class="left"></div>
+        <div id="Hotell" class="left"></div>
+    <!--<div id="Total" class="left read-more-target"></div>
+        <div id="Snabbmat" class="left read-more-target"></div>
+        <div id="LK" class="left read-more-target"></div>
+        <div id="NojesDiv" class="left read-more-target"></div>
+        <div id="Pers" class="left read-more-target"></div>-->
+    </div>
+    <label for="post" class="read-more-trigger"></label>
+    <!--<div class="barcharts">
+        <div id="myDiv"></div>
+    </div>-->
+
+</div>
+<div style="display:clear;"></div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+<script src="plotly-latest.min.js"></script>
+<script src="RestIndex.js"></script>
+<script>
+    function showCafe() {
+        // Get the checkbox
+        var checkBox = document.getElementById("showCafe");
+        // Get the div
+        var text = document.getElementById("Cafe");
+        // If the checkbox is checked, display the div
+        if (checkBox.checked == true){
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function showHotell() {
+        // Get the checkbox
+        var checkBox = document.getElementById("showHotell");
+        // Get the div
+        var text = document.getElementById("Hotell");
+        // If the checkbox is checked, display the div
+        if (checkBox.checked == true){
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+</script>
+</html>
