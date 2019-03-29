@@ -578,6 +578,46 @@ function funclayout(supertitle){            // Funktion för layout av diagram
   return layout;
 }
 
+function cumlayout(supertitle){            // Funktion för layout av diagram
+  var layout = {
+    title: supertitle,
+    titlefont: {
+      family: "'Ubuntu', Old Standard, serif",
+      color: "black"
+    },
+    paper_bgcolor: 'rgba(0, 0, 0, 0)', 
+    plot_bgcolor: 'rgba(0, 0, 0, 0)', 
+    autosize: true,
+    xaxis: {
+      tickvals:['2008K04', '2009K04', '2010K04', '2011K04', '2012K04', '2013K04','2014K04', '2015K04', '2016K04', '2017K04', '2018K04'],
+      ticktext : ['Q4 2008', 'Q4 2009', 'Q4 2010', 'Q4 2011', 'Q4 2012', 'Q4 2013', 'Q4 2014', 'Q4 2015', 'Q4 2016', 'Q4 2017', 'Q4 2018'],
+      color: "black",
+      showgrid: false,
+      tickangle: 45,
+      showticklabels: true,
+      tickfont: {
+        family: "'Ubuntu', Old Standard, serif",
+        size: 14       
+      }
+    },
+    yaxis: {
+      title: "F\xF6r\xE4ndring (%) mot samma kvartal f\xF6eg\xE5ende \xE5r",
+      titlefont: {
+        family: "'Ubuntu', Old Standard, serif",
+        size: 14 
+      },
+      color: "Black",
+      showgrid: true,
+      bgcolor: "grey",
+      tickfont: {
+        family: "'Ubuntu', Old Standard, serif",
+        size: 14,
+      }
+    }         
+  }
+
+  return layout;
+}
 
   Plotly.newPlot("Cafe", [graf(cafen, "cafediagram")], funclayout("Caf\xE9er") );
   Plotly.newPlot("Hotell", [graf(hotell, "HotellDiagram")], funclayout("Hotellrestauranger"));
@@ -587,7 +627,7 @@ function funclayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("Pers", [graf(personals, "PersonalDiagram")], funclayout("Personalrestauranger"));
   Plotly.newPlot("NojesDiv", [graf(nojes, "nojesDiagram")], funclayout("N\xF6jesrestauranger"));
 
-  Plotly.newPlot("cumCafe", [graf(cumulative(cafen), "cumCafediagram")], funclayout("cumCaf\xE9er") );
+  Plotly.newPlot("cumCafe", [graf(cumulative(cafen), "cumCafediagram")], cumlayout("cumCaf\xE9er"));
 
 
 
