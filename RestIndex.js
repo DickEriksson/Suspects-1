@@ -450,9 +450,11 @@ var manadlist = []
 var cafen = []
 var snabbmat = []
 var lunchkvall = []
-var trafiknara = []
+var trafiknaras = []
 var nojes = []
 var personals = []
+
+
 
 for (var i = 0; i < data.length; i++) {     // Skapar en lista av variabeln Data. 
   manadlist.push(data[i].manad);          
@@ -463,8 +465,12 @@ for (var i = 0; i < data.length; i++) {     // Skapar en lista av variabeln Data
   lunchkvall.push(data[i].LunchKvall);
   nojes.push(data[i].noje);
   personals.push(data[i].personal);
+  trafiknaras.push(data[i].trafiknara);
+  
+  
 
 }
+
  
 function cumulative(inVar) {
   var outVar = []
@@ -479,10 +485,27 @@ function cumulative(inVar) {
   return outVar
 }
 
+function sum(Bsum){
+             
+if (toString.call(Bsum) !== "[object Array]")
+  return false;
+       
+  var total =  0;
+    for(var i=0;i<Bsum.length;i++)
+      {                  
+      if(isNaN(Bsum[i])){
+      continue;
+      }
+    total += Number(Bsum[i]);
+    }
+    return total;
+  }
+
+           
 
 var barChart = [
   {
-    y:  [/*'Total restaurangförsäljning',*/ 'Hotellrestauranger', 'Caf\xE9er', "Snabbmatsrestauranger", "Lunch och kv\xE4llsrestauranger", "trafiknara", "nojes", "personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
+    y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch & kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
     x: [/*9797,*/ 1044, 627, 1190, 4532, 695, 1304, 405],
     type: 'bar',
     orientation: 'h',
@@ -491,23 +514,42 @@ var barChart = [
   }
 ];
 
+var barChart2 = [
+  {
+    y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch & kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
+    x: [/*9797,*/ sum(hotell), sum(cafen), sum(snabbmat) , sum(lunchkvall), sum(trafiknaras) , sum(nojes), sum(personals)],
+    type: 'bar',
+    orientation: 'h',
+    
+    
+  }
+];
+
+function BarLay(barTitle, TextSide, SuperRange) {
 var barLayout = {
+  title: barTitle,
+  titlefont: {
+    family: "'Ubuntu', Old Standard, serif",
+    color: "black"
+  },
   height: 400,
   width: 600,
 
   xaxis:{
-    autorange:'reversed'
+    autorange: SuperRange
 },
 yaxis:{
   font: {
     size: 1,
 
   },  
-  side: "right",
+  side: TextSide,
 }
+}
+return barLayout;
 }
 
-Plotly.newPlot('myDiv', barChart, barLayout);
+
 
 function graf(ydata, namedata) {            // Funktion för att fylla Diagram med värden. 
   var ChartMaster = { 
@@ -578,7 +620,7 @@ function funclayout(supertitle){            // Funktion för layout av diagram
   return layout;
 }
 
-function cumlayout(supertitle){            // Funktion för layout av diagram
+function Kumulayout(supertitle){            // Funktion för layout av diagram
   var layout = {
     title: supertitle,
     titlefont: {
@@ -590,7 +632,7 @@ function cumlayout(supertitle){            // Funktion för layout av diagram
     autosize: true,
     xaxis: {
       tickvals:['2008K04', '2009K04', '2010K04', '2011K04', '2012K04', '2013K04','2014K04', '2015K04', '2016K04', '2017K04', '2018K04'],
-      ticktext : ['Q4 2008', 'Q4 2009', 'Q4 2010', 'Q4 2011', 'Q4 2012', 'Q4 2013', 'Q4 2014', 'Q4 2015', 'Q4 2016', 'Q4 2017', 'Q4 2018'],
+      ticktext : ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
       color: "black",
       showgrid: false,
       tickangle: 45,
@@ -626,8 +668,19 @@ function cumlayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("LK", [graf(lunchkvall, "LKDiagram")], funclayout("Lunch och kv\xE4llsrestauranger"));
   Plotly.newPlot("Pers", [graf(personals, "PersonalDiagram")], funclayout("Personalrestauranger"));
   Plotly.newPlot("NojesDiv", [graf(nojes, "nojesDiagram")], funclayout("N\xF6jesrestauranger"));
+  Plotly.newPlot("Trafiknara", [graf(trafiknaras, "TrafikDiagram")], funclayout("Trafikn\xE4rarestauranger"));
 
-  Plotly.newPlot("cumCafe", [graf(cumulative(cafen), "cumCafediagram")], cumlayout("cumCaf\xE9er"));
+  Plotly.newPlot("KumuCafe", [graf(cumulative(cafen))], Kumulayout("Caf\xE9er kumulativ"));
+  Plotly.newPlot("KumuHotell", [graf(cumulative(hotell))], Kumulayout("Hotell kumulativ"));
+  Plotly.newPlot("KumuSnabbmat", [graf(cumulative(snabbmat))], Kumulayout("Snabbmat kumulativ"));
+  Plotly.newPlot("KumuLK", [graf(cumulative(lunchkvall))], Kumulayout("Lunch och kv\xE4llsrestauranger kumulativ"));
+  Plotly.newPlot("KumuPers", [graf(cumulative(personals))], Kumulayout("Personalrestauranger kumulativ"));
+  Plotly.newPlot("KumuNojes", [graf(cumulative(nojes))], Kumulayout("N\xF6jesrestauranger kumulativ"));
+  Plotly.newPlot("KumuTrafiknara", [graf(cumulative(trafiknaras))], Kumulayout("Trafikn\xE4rarestauranger"));
+  Plotly.newPlot("KumuTotal", [graf(cumulative(total))], Kumulayout("Total restaurangf\xF6rs\xE4ljning"));
+
+  Plotly.newPlot('BarDiv', barChart, BarLay("Oms\xE4ttning Mkr (2018 Kv1)", "right", "reversed"));
+  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning(%) 2008-2018", "left", ""));
 
 
 
