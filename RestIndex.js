@@ -506,7 +506,7 @@ if (toString.call(Bsum) !== "[object Array]")
 var barChart = [
   {
     y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch & kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
-    x: [/*9797,*/ 1044, 627, 1190, 4532, 695, 1304, 405],
+    x: [/*9797,*/ 4334, 2215, 4314, 16099, 2390, 	4626, 1247],
     type: 'bar',
     orientation: 'h',
     
@@ -643,7 +643,7 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
       }
     },
     yaxis: {
-      title: "Kumulativ f\xF6r\xE4ndring",
+      title: "Kumulativ f\xF6r\xE4ndring (%) mot samma kvartal f\xF6eg\xE5ende \xE5r",
       titlefont: {
         family: "'Ubuntu', Old Standard, serif",
         size: 14 
@@ -679,8 +679,8 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("KumuTrafiknara", [graf(cumulative(trafiknaras))], Kumulayout("Trafikn\xE4rarestauranger"));
   Plotly.newPlot("KumuTotal", [graf(cumulative(total))], Kumulayout("Total restaurangf\xF6rs\xE4ljning"));
 
-  Plotly.newPlot('BarDiv', barChart, BarLay("Oms\xE4ttning Mkr (2018 Kv1)", "left", ""));
-  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning(%) 2008-2018", "right", "reversed"));
+  Plotly.newPlot('BarDiv', barChart, BarLay("Oms\xE4ttning Mkr (2018 Kv4)", "left", ""));
+  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning(Oms\xE4ttning %) 2008-2018", "right", "reversed"));
 
 
 
