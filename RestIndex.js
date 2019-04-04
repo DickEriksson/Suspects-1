@@ -539,14 +539,19 @@ var barLayout = {
   autosize: true,
 
   xaxis:{
-    autorange: SuperRange
-},
-yaxis:{
-  font: {
-    size: 1,
-
-  },  
-  side: TextSide,
+    autorange: SuperRange,
+    tickfont: {
+      family: "'Ubuntu', Old Standard, serif",
+      size: 11
+    }
+  },
+  yaxis:{
+    title: "Restaurangtyper",
+    tickfont: {
+      family: "'Ubuntu', Old Standard, serif",
+      size: 11
+    }, 
+    side: TextSide,
 }
 }
 return barLayout;
@@ -604,7 +609,7 @@ function funclayout(supertitle){            // Funktion för layout av diagram
     },
     yaxis: {
       fixedrange: true,
-      range: [-13, 15],
+      range: [-15, 20],
       title: "F\xF6r\xE4ndring (%) mot samma kvartal f\xF6eg\xE5ende \xE5r",
       titlefont: {
         family: "'Ubuntu', Old Standard, serif",
