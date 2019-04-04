@@ -9,7 +9,7 @@ body{
     height: 100%;
     font-family: 'Ubuntu', sans-serif;
 }
-
+/* Making a nice shadow effect top of the window */
 body:before {
     content: "";
     position: fixed;
@@ -22,7 +22,7 @@ body:before {
                    box-shadow: 0px 0px 10px rgba(0,0,0,.8);
     z-index: 100;
 }
-
+/* A titlebar for the other sites */
 #titlebar {
     position: absolute;
     top: 0;
@@ -38,7 +38,7 @@ body:before {
     z-index: 10;
     font-size: 1.5em;
 }
-
+/* The video we have as a background */
 #video {
     object-fit: inherit;
     position: fixed;
@@ -51,14 +51,14 @@ body:before {
     left: 0;
     filter:brightness(33%);
 }
-
+/* The header div */
 .header{
     position: relative;
     text-align: center;
     min-height: 89.7%; 
     width: 100%;
 }
-
+/* The title text, background "hacks" for making it having a rainbow gradient */
 h1{
     font-size: 9em;
     letter-spacing: -0.05em;
@@ -78,7 +78,7 @@ h1{
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
+/* Styling settings for the navbar */
 #navbar {
     position: absolute;
     bottom: -3px;
@@ -92,14 +92,14 @@ h1{
     align-items: center;
     justify-content: center;
 }
-
+/* The logo bottom to the right */
 .logo{
     position: absolute;
     bottom: 4px;
     right: -12px;
     height: 4em;
 }
-
+/* The navbars "buttons/links" */
 #navbar a {
     float: left;
     display: block;
@@ -121,15 +121,7 @@ h1{
     color: black;
     border-bottom: 5px solid black;
 }
-
-.content{
-    position: relative;
-    background-color: #fff;
-    text-align: center;
-    width: 100%;
-    padding: 0;
-}
-
+/* The karta iframe that we load in */
 .karta{
     position: absolute;
     top: 10.1%;
@@ -138,7 +130,7 @@ h1{
     min-width: 100%;
     min-height: 90%;
 }
-
+/* Container div for the rapport and sammanfattning sites */
 .rapport-cont{
     position: absolute;
     top: 50%;

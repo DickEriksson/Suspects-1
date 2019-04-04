@@ -1,3 +1,4 @@
+/* the content div */
 .container {
     padding-top: 70px;
     width: 1500px;
@@ -5,26 +6,26 @@
     margin: auto;
     font-family: 'Ubuntu', sans-serif;
 }
-
+/* the div containg the checkboxes */
 .cbCont{
     width: 100%;
     text-align: center;
     font-size: 18px;
 }
-
+/* the div containg the regular charts */
 .regCharts{
     width: 100%; 
     height: auto;
     clear: both;
     display: block;
 }
-
+/* the div containg the cumulaiting charts */
 .kumuCharts{
     width: 100%; 
     height: auto;
     clear: both;
 }
-
+/* The divs for all the line charts, had divs that had the class right before. Therefor the name.. */
 .left{
     width: 750px; 
     height: auto;
@@ -32,14 +33,14 @@
     float: left;
     display: none;
 }
-
+/* the div containg the bar charts */
 .barCharts{
     text-align: center;
     width: 100%; 
     height: auto;
     clear: both;
 }
-
+/* the div for the bar charts */
 .bars{
     width: 750px; 
     height: auto;
@@ -50,7 +51,7 @@
 
 
 
-/* CSS för toggle knappen */
+/* CSS for the toggle/switch button */
 .switch {
     margin-bottom: 20px;
     position: relative;
@@ -103,7 +104,7 @@ input:checked + .slider:before {
 transform: translateX(26px);
 }
 
-/* Rounded sliders */
+/* Making the slider rounded */
 .slider.round {
 border-radius: 34px;
 }
@@ -112,7 +113,7 @@ border-radius: 34px;
 border-radius: 50%;
 }
 
-/* CSS för checkboxes */
+/* CSS for checkboxes */
 .checkBoxes {
     text-align: center;
     position: relative;
@@ -193,6 +194,7 @@ border-radius: 50%;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
+  
  #myBtn{
       position: absolute;
       left: 50px;
