@@ -32,23 +32,23 @@ Inlämningsuppgift grupparbete BI-programmeringsspråk
 ## Credit
 
 **Karl Olsson**
-    * Större delen av javascript:andet
-    * Laddade ner och aggregerade; solTimmar och stadsNamn
+* Större delen av javascript:andet
+* Laddade ner och aggregerade; solTimmar och stadsNamn
 
 **Dick Eriksson**
-    * Större delen av dokumentations dokumentet
-    * Större delen av research och trend arbetet
-    * Större delen av PowerPoint rapporten
-    * Laddade ner och aggregerade; Nederbörd
+* Större delen av dokumentations dokumentet
+* Större delen av research och trend arbetet
+* Större delen av PowerPoint rapporten
+* Laddade ner och aggregerade; Nederbörd
 
 **Jonathan Askild**
-    * Större delen av HTML:andet
-    * Större delen av CSS:andet
+* Större delen av HTML:andet
+* Större delen av CSS:andet
 
 **Patric Hjalmarsson**
-    * Större delen av data manipulationen
-    * Laddade ner och aggregerade; Latitud, Longitud, Vind, Temperatur
-    * Större delen av Python:andet
-    * Viktigaste av allt; Skrivit större delen av den här README:n ;)
+* Större delen av data manipulationen
+* Laddade ner och aggregerade; Latitud, Longitud, Vind, Temperatur
+* Större delen av Python:andet
+* Viktigaste av allt; Skrivit större delen av den här README:n ;)
 
 Med "Större delen av" menas att en person har haft huvudansvar för den delen, men vi har alla haft input och pillat lite i varandras delar.
