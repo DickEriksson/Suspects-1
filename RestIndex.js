@@ -643,7 +643,7 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
       }
     },
     yaxis: {
-      title: "F\xF6r\xE4ndring (%) mot samma kvartal f\xF6eg\xE5ende \xE5r",
+      title: "Kumulativ f\xF6r\xE4ndring",
       titlefont: {
         family: "'Ubuntu', Old Standard, serif",
         size: 14 
