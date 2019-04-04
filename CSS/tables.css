@@ -1,0 +1,21 @@
+.coolTable {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .coolTable td, .coolTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .coolTable tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .coolTable tr:hover {background-color: #ddd;}
+  
+  .coolTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #3186cc;
+    color: white;
+  }
