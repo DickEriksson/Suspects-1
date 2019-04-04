@@ -34,7 +34,7 @@
         <br />
         <!-- checkboxes -->
         <label class="checkBoxes">Caféer
-            <input type="checkbox" id="showCafe" name="cbg1[]" onclick="showCafe()">
+            <input type="checkbox" id="showCafe" name="cbg1[]" onclick="showCafe()" checked>
             <span class="checkmark"></span>
         </label>
         <label class="checkBoxes">Hotellrest.
@@ -62,7 +62,7 @@
             <span class="checkmark"></span>
         </label>
         <label class="checkBoxes">Total försäljning
-            <input type="checkbox" id="showTotal" name="cbg1[]" onclick="showTotal()">
+            <input type="checkbox" id="showTotal" name="cbg1[]" onclick="showTotal()" checked>
             <span class="checkmark"></span>
         </label>
         <label class="checkBoxes">Visa alla
@@ -72,14 +72,14 @@
     </div>
     <!-- The "Regular Charts" -->
     <div class="regCharts" id="regCharts">
-        <div id="Cafe" name="rc" class="left"></div>
+        <div id="Cafe" name="rc" class="left" style="display: block;"></div>
         <div id="Hotell" name="rc" class="left"></div>
         <div id="Snabbmat" name="rc" class="left"></div>
         <div id="LK" name="rc" class="left"></div>
         <div id="NojesDiv" name="rc" class="left"></div>
         <div id="Pers" name="rc" class="left"></div>
         <div id="Trafiknara" name="rc" class="left"></div>
-        <div id="Total" name="rc" class="left"></div>
+        <div id="Total" name="rc" class="left" style="display: block;"></div>
     </div>
     <!-- The Cumulative Charts -->
     <div class="kumuCharts" id="kumuCharts">
