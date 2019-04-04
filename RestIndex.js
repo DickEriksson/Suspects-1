@@ -643,7 +643,7 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
       }
     },
     yaxis: {
-      title: "F\xF6r\xE4ndring (%) mot samma kvartal f\xF6eg\xE5ende \xE5r",
+      title: "Kumulativ f\xF6r\xE4ndring",
       titlefont: {
         family: "'Ubuntu', Old Standard, serif",
         size: 14 
@@ -671,16 +671,16 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("Trafiknara", [graf(trafiknaras, "TrafikDiagram")], funclayout("Trafikn\xE4rarestauranger"));
 
   Plotly.newPlot("KumuCafe", [graf(cumulative(cafen))], Kumulayout("Caf\xE9er kumulativ"));
-  Plotly.newPlot("KumuHotell", [graf(cumulative(hotell))], Kumulayout("Hotell kumulativ"));
-  Plotly.newPlot("KumuSnabbmat", [graf(cumulative(snabbmat))], Kumulayout("Snabbmat kumulativ"));
+  Plotly.newPlot("KumuHotell", [graf(cumulative(hotell))], Kumulayout("Hotellrestauranger kumulativ"));
+  Plotly.newPlot("KumuSnabbmat", [graf(cumulative(snabbmat))], Kumulayout("Snabbmatsrestauranger kumulativ"));
   Plotly.newPlot("KumuLK", [graf(cumulative(lunchkvall))], Kumulayout("Lunch och kv\xE4llsrestauranger kumulativ"));
   Plotly.newPlot("KumuPers", [graf(cumulative(personals))], Kumulayout("Personalrestauranger kumulativ"));
   Plotly.newPlot("KumuNojes", [graf(cumulative(nojes))], Kumulayout("N\xF6jesrestauranger kumulativ"));
   Plotly.newPlot("KumuTrafiknara", [graf(cumulative(trafiknaras))], Kumulayout("Trafikn\xE4rarestauranger"));
   Plotly.newPlot("KumuTotal", [graf(cumulative(total))], Kumulayout("Total restaurangf\xF6rs\xE4ljning"));
 
-  Plotly.newPlot('BarDiv', barChart, BarLay("Oms\xE4ttning Mkr (2018 Kv1)", "right", "reversed"));
-  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning(%) 2008-2018", "left", ""));
+  Plotly.newPlot('BarDiv', barChart, BarLay("Oms\xE4ttning Mkr (2018 Kv1)", "left", ""));
+  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning(%) 2008-2018", "right", "reversed"));
 
 
 
