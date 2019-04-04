@@ -671,8 +671,8 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("Trafiknara", [graf(trafiknaras, "TrafikDiagram")], funclayout("Trafikn\xE4rarestauranger"));
 
   Plotly.newPlot("KumuCafe", [graf(cumulative(cafen))], Kumulayout("Caf\xE9er kumulativ"));
-  Plotly.newPlot("KumuHotell", [graf(cumulative(hotell))], Kumulayout("Hotell kumulativ"));
-  Plotly.newPlot("KumuSnabbmat", [graf(cumulative(snabbmat))], Kumulayout("Snabbmat kumulativ"));
+  Plotly.newPlot("KumuHotell", [graf(cumulative(hotell))], Kumulayout("Hotellrestauranger kumulativ"));
+  Plotly.newPlot("KumuSnabbmat", [graf(cumulative(snabbmat))], Kumulayout("Snabbmatsrestauranger kumulativ"));
   Plotly.newPlot("KumuLK", [graf(cumulative(lunchkvall))], Kumulayout("Lunch och kv\xE4llsrestauranger kumulativ"));
   Plotly.newPlot("KumuPers", [graf(cumulative(personals))], Kumulayout("Personalrestauranger kumulativ"));
   Plotly.newPlot("KumuNojes", [graf(cumulative(nojes))], Kumulayout("N\xF6jesrestauranger kumulativ"));
