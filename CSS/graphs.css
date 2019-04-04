@@ -1,12 +1,31 @@
 .container {
     padding-top: 70px;
     width: 1500px;
-    background-color: #eee;
+    background-color: #fff;
     margin: auto;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.left, .right{
+.cbCont{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.regCharts{
+    width: 100%; 
+    height: auto;
+    clear: both;
+    display: block;
+}
+
+.kumuCharts{
+    width: 100%; 
+    height: auto;
+    clear: both;
+}
+
+.left{
     width: 750px; 
     height: auto;
     margin: 0 auto;
@@ -14,50 +33,198 @@
     display: none;
 }
 
-
-.barcharts{
-    width: 1000px; 
+.barCharts{
+    text-align: center;
+    width: 100%; 
     height: auto;
     clear: both;
 }
 
-.read-more-state {
+.bars{
+    width: 750px; 
+    height: auto;
+    margin: 0 auto;
+    float: left;
+    display: block;
+}
+
+
+
+/* CSS för toggle knappen */
+.switch {
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+-webkit-transition: .4s;
+transition: .4s;
+}
+
+input:checked + .slider {
+background-color: #3186cc;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px #3186cc;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}
+
+/* CSS för checkboxes */
+.checkBoxes {
+    text-align: center;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkBoxes input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.checkBoxes:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkBoxes input:checked ~ .checkmark {
+    background-color: #3186cc;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
     display: none;
 }
-  
-.read-more-target {
-    opacity: 0;
-    max-height: 0;
-    font-size: 0;
-    transition: .25s ease;
-}
 
-.read-more-state:checked ~ .read-more-wrap .read-more-target {
-    opacity: 1;
-    font-size: inherit;
-    max-height: 999em;
-}
-
-.read-more-state ~ .read-more-trigger:before {
-    content: 'Show more';
-}
-
-.read-more-state:checked ~ .read-more-trigger:before {
-    content: 'Show less';
-}
-
-.read-more-trigger {
-    text-align: center;
-    cursor: pointer;
-    padding: 0 .5em;
-    color: #3186cc;
-    font-size: .9em;
-    line-height: 2;
-    border: 1px solid #3186cc;
-    border-radius: .25em;
+/* Show the checkmark when checked */
+.checkBoxes input:checked ~ .checkmark:after {
     display: block;
-    float: left;
-    position: relative;
-    left: 50%;
-    clear: both;
+}
+
+/* Style the checkmark/indicator */
+.checkBoxes .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+ #myBtn{
+      position: absolute;
+      left: 50px;
+      top: 100px;
+      z-index: 1000;
+  }
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    height: 70%;
+    padding-bottom: 80px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .restindex{
+    width:100%;
+    height: 100%;
 }

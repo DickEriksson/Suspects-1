@@ -505,23 +505,25 @@ if (toString.call(Bsum) !== "[object Array]")
 
 var barChart = [
   {
-    y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch & kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
+    y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch&kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
     x: [/*9797,*/ 4334, 2215, 4314, 16099, 2390, 	4626, 1247],
     type: 'bar',
     orientation: 'h',
-    
-    
+    marker: {
+      color: "#3186cc"
+    }
   }
 ];
 
 var barChart2 = [
   {
-    y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch & kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
+    y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch&kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
     x: [/*9797,*/ sum(hotell), sum(cafen), sum(snabbmat) , sum(lunchkvall), sum(trafiknaras) , sum(nojes), sum(personals)],
     type: 'bar',
     orientation: 'h',
-    
-    
+    marker: {
+      color: "#3186cc"
+    }
   }
 ];
 
@@ -532,8 +534,9 @@ var barLayout = {
     family: "'Ubuntu', Old Standard, serif",
     color: "black"
   },
-  height: 400,
-  width: 600,
+  paper_bgcolor: 'rgba(0, 0, 0, 0)', 
+  plot_bgcolor: 'rgba(0, 0, 0, 0)', 
+  autosize: true,
 
   xaxis:{
     autorange: SuperRange
