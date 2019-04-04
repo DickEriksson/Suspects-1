@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
-<head>
-<!-- loading CSS library -->
-<link rel="stylesheet" href="css/graphs.css" />
-
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <!-- loading CSS library -->
+    <link rel="stylesheet" href="css/graphs.css" />
 </head>
 
 <body>
@@ -135,13 +134,24 @@
     }
     //Script for toggle the switch btn for regular graphs or cumulative graphs
     function chartSwitch(cn) {
+        var swtch = document.getElementById("chartSwitch");
         var x = document.getElementById("regCharts");
         var y = document.getElementById("kumuCharts");
+        var rarray = document.getElementsByName("rc");
+        var karray = document.getElementsByName("kc");
         var cbarray = document.getElementsByName(cn);
         var allbtn = document.getElementById("showAll");
-        for(var c = 0; c < cbarray.length; c++){
-            cbarray[c].checked = false;
-            allbtn.checked = false;
+        for(var r = 0; r < rarray.length; r++){
+            if(cbarray[r].checked == true && swtch.checked == false) {
+                rarray[r].style.display = "block";
+                karray[r].style.display = "none";
+            } else if (cbarray[r].checked == true && swtch.checked == true){
+                karray[r].style.display = "block";
+                rarray[r].style.display = "none";
+            } else {
+            rarray[r].style.display = "none";
+            karray[r].style.display = "none";
+            }
         }
         if (x.style.display !== "none") {
             x.style.display = "none";
