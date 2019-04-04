@@ -527,7 +527,7 @@ var barChart2 = [
   }
 ];
 
-function BarLay(barTitle, TextSide, SuperRange) {
+function BarLay(barTitle, TextSide, SuperRange, Test) {
 var barLayout = {
   title: barTitle,
   titlefont: {
@@ -546,7 +546,10 @@ var barLayout = {
     }
   },
   yaxis:{
-    title: "Restaurangtyper",
+    title: Test,
+    titlefont: {
+      family: "'Ubuntu', Old Standard, serif",
+      size: 14 },
     tickfont: {
       family: "'Ubuntu', Old Standard, serif",
       size: 11
@@ -688,7 +691,7 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("KumuTotal", [graf(cumulative(total))], Kumulayout("Total restaurangf\xF6rs\xE4ljning"));
 
   Plotly.newPlot('BarDiv', barChart, BarLay("Oms\xE4ttning Mkr (2018 Kv4)", "left", ""));
-  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning(Oms\xE4ttning %) 2008-2018", "right", "reversed"));
+  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning(Oms\xE4ttning %) 2008-2018", "right", "reversed", "Restaurangtyper"));
 
 
 
