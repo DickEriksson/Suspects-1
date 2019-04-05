@@ -1,6 +1,9 @@
+
+
 .coolTable {
     border-collapse: collapse;
     width: 100%;
+    font-family: 'Ubuntu', sans-serif;
   }
   
   .coolTable td, .coolTable th {
