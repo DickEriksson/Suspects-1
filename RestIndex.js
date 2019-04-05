@@ -691,7 +691,7 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("KumuTotal", [graf(cumulative(total))], Kumulayout("Total restaurangf\xF6rs\xE4ljning"));
 
   Plotly.newPlot('BarDiv', barChart, BarLay("Oms\xE4ttning Mkr (2018 Kv4)", "left", ""));
-  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning(Oms\xE4ttning %) 2008-2018", "right", "reversed", "Restaurangtyper"));
+  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning av oms\xE4ttning (%) 2008-2018", "right", "reversed", "Restaurangtyper"));
 
 
 
