@@ -472,7 +472,7 @@ for (var i = 0; i < data.length; i++) {     // Skapar en lista av variabeln Data
 }
 
  
-function cumulative(inVar) {
+function cumulative(inVar) { // Funktion för kummulativ uträkning.  
   var outVar = []
 
   for (var i = 0; i < inVar.length; i++) {
@@ -485,7 +485,7 @@ function cumulative(inVar) {
   return outVar
 }
 
-function sum(Bsum){
+function sum(Bsum){ // summa funktion tagen från Google
              
 if (toString.call(Bsum) !== "[object Array]")
   return false;
@@ -501,12 +501,17 @@ if (toString.call(Bsum) !== "[object Array]")
     return total;
   }
 
-           
+  // Barchart data inlagd som listor i en variabel. 
+var OmMkr = [/*9797,*/ 4334, 2215, 4314, 16099, 2390, 4626, 1247]
+var OmPro = [/*9797,*/ sum(hotell), sum(cafen), sum(snabbmat) , sum(lunchkvall), sum(trafiknaras) , sum(nojes), sum(personals)]
 
+
+
+function SuperBar(Xval) { //Funktion för barchart, Xval fyller på X-axelns värden och Y-axelns värden är statistiska i detta fall. 
 var barChart = [
   {
     y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch&kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
-    x: [/*9797,*/ 4334, 2215, 4314, 16099, 2390, 	4626, 1247],
+    x: Xval,//[/*9797,*/ 4334, 2215, 4314, 16099, 2390, 	4626, 1247],
     type: 'bar',
     orientation: 'h',
     marker: {
@@ -514,20 +519,10 @@ var barChart = [
     }
   }
 ];
+return barChart;
+}
 
-var barChart2 = [
-  {
-    y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch&kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
-    x: [/*9797,*/ sum(hotell), sum(cafen), sum(snabbmat) , sum(lunchkvall), sum(trafiknaras) , sum(nojes), sum(personals)],
-    type: 'bar',
-    orientation: 'h',
-    marker: {
-      color: "#3186cc"
-    }
-  }
-];
-
-function BarLay(barTitle, TextSide, SuperRange, Test) {
+function BarLay(barTitle, TextSide, SuperRange, Test) { //Funktion för Barchartens layout
 var barLayout = {
   title: barTitle,
   titlefont: {
@@ -690,8 +685,8 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
   Plotly.newPlot("KumuTrafiknara", [graf(cumulative(trafiknaras))], Kumulayout("Trafikn\xE4rarestauranger"));
   Plotly.newPlot("KumuTotal", [graf(cumulative(total))], Kumulayout("Total restaurangf\xF6rs\xE4ljning"));
 
-  Plotly.newPlot('BarDiv', barChart, BarLay("Oms\xE4ttning Mkr (2018 Kv4)", "left", ""));
-  Plotly.newPlot('BarDiv1', barChart2, BarLay("\xD6kning av oms\xE4ttning (%) 2008-2018", "right", "reversed", "Restaurangtyper"));
+  Plotly.newPlot('BarDiv', SuperBar(OmMkr), BarLay("Oms\xE4ttning Mkr (2018 Kv4)", "left", ""));
+  Plotly.newPlot('BarDiv1', SuperBar(OmPro), BarLay("\xD6kning av oms\xE4ttning (%) 2008-2018", "right", "reversed", "Restaurangtyper"));
 
 
 
@@ -777,3 +772,14 @@ function Kumulayout(supertitle){            // Funktion för layout av diagram
   //   }
           
   // }
+  // var barChart2 = [
+//   {
+//     y:  [/*'Total restaurangförsäljning',*/ 'Hotell', 'Caf\xE9er', "Snabbmat", "Lunch&kv\xE4lls", "Trafikn\xE4ra", "N\xF6jes", "Personal"], // Försäljning per branschkatergori. Belopp i Mkr för februari 2018
+//     x: ,
+//     type: 'bar',
+//     orientation: 'h',
+//     marker: {
+//       color: "#3186cc"
+//     }
+//   }
+// ];
