@@ -1,8 +1,10 @@
+body{
+    background-color: rgb(249, 249, 249);
+}
 /* the content div */
 .container {
     padding-top: 70px;
     width: 1500px;
-    background-color: #fff;
     margin: auto;
     font-family: 'Ubuntu', sans-serif;
 }
