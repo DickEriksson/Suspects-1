@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(248, 248, 248);
+}
+/* center the titles  */
+h2, h3{
+    text-align: center;
+}
+/* the div around the all text */
+.rapport-wrap{
+    top: 10%;
+    background-color: #fff;
+    position: absolute;
+    left: 25%;
+    margin-right: -25%;
+    max-width: 50%;
+    font-family: 'Ubuntu', sans-serif;
+    color: #000;
+    padding: 30px;
+}
+/* center the images */
+img{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* styling the links */
+a{
+    font-size: 0.75em;
+    font-style: italic;
+}

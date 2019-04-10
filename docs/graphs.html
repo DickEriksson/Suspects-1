@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <!-- loading CSS library -->
+    <link rel="stylesheet" href="css/graphs.css" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300" rel="stylesheet" />
+</head>
+
+<body>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Visa data</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <object class="restindex" data="Restaurangindex.html"></object>
+  </div>
+
+</div>
+<!-- The div that contains all the graphs and such -->
+<div class="container">
+    <!-- The container that contains the checkboxes-->
+    <div class="cbCont">
+        <p>Visa Kumulativ</p>
+        <!-- switch button -->
+        <label class="switch">
+            <input type="checkbox" id="chartSwitch" onclick="chartSwitch('cbg1[]')">
+            <span class="slider round"></span>
+        </label>
+        <br />
+        <!-- checkboxes -->
+        <label class="checkBoxes">Caféer
+            <input type="checkbox" id="showCafe" name="cbg1[]" onclick="showCafe()" checked>
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkBoxes">Hotellrest.
+            <input type="checkbox" id="showHotell" name="cbg1[]" onclick="showHotell()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkBoxes">Snabbmatsrest.
+            <input type="checkbox" id="showSnabbmat" name="cbg1[]" onclick="showSnabbmat()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkBoxes">Lunch & kvällsrest.
+            <input type="checkbox" id="showLK" name="cbg1[]" onclick="showLK()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkBoxes">Nöjesrest.
+            <input type="checkbox" id="showNojes" name="cbg1[]" onclick="showNojes()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkBoxes">Personalrest.
+            <input type="checkbox" id="showPers" name="cbg1[]" onclick="showPers()" checked>
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkBoxes">Trafiknära rest.
+            <input type="checkbox" id="showTrafiknara" name="cbg1[]" onclick="showTrafiknara()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkBoxes">Total försäljning
+            <input type="checkbox" id="showTotal" name="cbg1[]" onclick="showTotal()">
+            <span class="checkmark"></span>
+        </label>
+        <label class="checkBoxes">Visa alla
+            <input type="checkbox" id="showAll" onchange="togglecheckboxes(this, 'cbg1[]')">
+            <span class="checkmark"></span>
+        </label>
+    </div>
+    <!-- The "Regular Charts" -->
+    <div class="regCharts" id="regCharts">
+        <div id="Cafe" name="rc" class="left" style="display: block;"></div>
+        <div id="Hotell" name="rc" class="left"></div>
+        <div id="Snabbmat" name="rc" class="left"></div>
+        <div id="LK" name="rc" class="left"></div>
+        <div id="NojesDiv" name="rc" class="left"></div>
+        <div id="Pers" name="rc" class="left" style="display: block;"></div>
+        <div id="Trafiknara" name="rc" class="left"></div>
+        <div id="Total" name="rc" class="left"></div>
+    </div>
+    <!-- The Cumulative Charts -->
+    <div class="kumuCharts" id="kumuCharts">
+        <div id="KumuCafe" name="kc" class="left"></div>
+        <div id="KumuHotell" name="kc" class="left"></div>
+        <div id="KumuSnabbmat" name="kc" class="left"></div>
+        <div id="KumuLK" name="kc" class="left"></div>
+        <div id="KumuNojes" name="kc" class="left"></div>
+        <div id="KumuPers" name="kc" class="left"></div>
+        <div id="KumuTrafiknara" name="kc" class="left"></div>
+        <div id="KumuTotal" name="kc" class="left"></div>
+    </div>
+    <!-- The bar charts -->
+    <div class="barCharts">
+        <div id="BarDiv1" class="bars"></div>
+        <div id="BarDiv" class="bars"></div>
+    </div>
+
+</div>
+<div style="display:clear;"></div>
+</body>
+<!-- loading JS libararies -->
+<script src="js/plotly-latest.min.js"></script>
+<script src="js/RestIndex.js"></script>
+<script>
+
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+    //Script for toggle the switch btn for regular graphs or cumulative graphs
+    function chartSwitch(cn) {
+        var swtch = document.getElementById("chartSwitch");
+        var x = document.getElementById("regCharts");
+        var y = document.getElementById("kumuCharts");
+        var rarray = document.getElementsByName("rc");
+        var karray = document.getElementsByName("kc");
+        var cbarray = document.getElementsByName(cn);
+        var allbtn = document.getElementById("showAll");
+        for(var r = 0; r < rarray.length; r++){
+            if(cbarray[r].checked == true && swtch.checked == false) {
+                rarray[r].style.display = "block";
+                karray[r].style.display = "none";
+            } else if (cbarray[r].checked == true && swtch.checked == true){
+                karray[r].style.display = "block";
+                rarray[r].style.display = "none";
+            } else {
+            rarray[r].style.display = "none";
+            karray[r].style.display = "none";
+            }
+        }
+        if (x.style.display !== "none") {
+            x.style.display = "none";
+            y.style.display = "block";
+        } else if (y.style.display !== "none"){
+            y.style.display = "none";
+            x.style.display = "block";
+        }
+    }
+    //Toggle all checkbxs with a master checkbox
+    function togglecheckboxes(master,group){
+        var cbarray = document.getElementsByName(group);
+        var regcha = document.getElementsByName("rc");
+        var kumcha = document.getElementsByName("kc");
+        var sldr = document.getElementById("chartSwitch");
+        for(var i = 0; i < cbarray.length; i++){
+            cbarray[i].checked = master.checked;
+
+        }
+        if (sldr.checked == false) {
+            for(var a = 0; a < regcha.length; a++){
+                if (master.checked == true){
+                    regcha[a].style.display = "block";
+                } else {
+                    regcha[a].style.display = "none";
+                }
+            }
+        } else if (sldr.checked == true){
+            for(var b = 0; b < kumcha.length; b++){
+                if (master.checked == true){
+                    kumcha[b].style.display = "block";
+                } else {
+                    kumcha[b].style.display = "none";
+                }
+            }
+        }
+    }
+    //All the remaining functions is for showing/hiding a graph with help of clicking a btn
+    function showCafe() {
+        // Get the checkboxs
+        var checkBox = document.getElementById("showCafe");
+        var slider = document.getElementById("chartSwitch");
+        // Get the divs
+        var div = document.getElementById("Cafe");
+        var kumudiv = document.getElementById("KumuCafe");
+        // If the checkbox is checked, display the div and hide the Cumulative/Regular variant
+        if (checkBox.checked == true && slider.checked == false){
+            div.style.display = "block";
+            kumudiv.style.display = "none";
+        } else if (checkBox.checked == true && slider.checked == true){ 
+            div.style.display = "none";
+            kumudiv.style.display = "block";
+        } else {
+            div.style.display = "none";
+            kumudiv.style.display = "none";
+        }
+    }
+    function showHotell() {
+        // Get the checkboxs
+        var checkBox = document.getElementById("showHotell");
+        var slider = document.getElementById("chartSwitch");
+        // Get the divs
+        var div = document.getElementById("Hotell");
+        var kumudiv = document.getElementById("KumuHotell");
+        // If the checkbox is checked, display the div and hide the Cumulative/Regular variant
+        if (checkBox.checked == true && slider.checked == false){
+            div.style.display = "block";
+            kumudiv.style.display = "none";
+        } else if (checkBox.checked == true && slider.checked == true){ 
+            div.style.display = "none";
+            kumudiv.style.display = "block";
+        } else {
+            div.style.display = "none";
+            kumudiv.style.display = "none";
+        }
+    }
+    function showSnabbmat() {
+        // Get the checkboxs
+        var checkBox = document.getElementById("showSnabbmat");
+        var slider = document.getElementById("chartSwitch");
+        // Get the divs
+        var div = document.getElementById("Snabbmat");
+        var kumudiv = document.getElementById("KumuSnabbmat");
+        // If the checkbox is checked, display the div and hide the Cumulative/Regular variant
+        if (checkBox.checked == true && slider.checked == false){
+            div.style.display = "block";
+            kumudiv.style.display = "none";
+        } else if (checkBox.checked == true && slider.checked == true){ 
+            div.style.display = "none";
+            kumudiv.style.display = "block";
+        } else {
+            div.style.display = "none";
+            kumudiv.style.display = "none";
+        }
+    }
+    function showLK() {
+        // Get the checkboxs
+        var checkBox = document.getElementById("showLK");
+        var slider = document.getElementById("chartSwitch");
+        // Get the divs
+        var div = document.getElementById("LK");
+        var kumudiv = document.getElementById("KumuLK");
+        // If the checkbox is checked, display the div and hide the Cumulative/Regular variant
+        if (checkBox.checked == true && slider.checked == false){
+            div.style.display = "block";
+            kumudiv.style.display = "none";
+        } else if (checkBox.checked == true && slider.checked == true){ 
+            div.style.display = "none";
+            kumudiv.style.display = "block";
+        } else {
+            div.style.display = "none";
+            kumudiv.style.display = "none";
+        }
+    }
+    function showNojes() {
+        // Get the checkboxs
+        var checkBox = document.getElementById("showNojes");
+        var slider = document.getElementById("chartSwitch");
+        // Get the divs
+        var div = document.getElementById("NojesDiv");
+        var kumudiv = document.getElementById("KumuNojes");
+        // If the checkbox is checked, display the div and hide the Cumulative/Regular variant
+        if (checkBox.checked == true && slider.checked == false){
+            div.style.display = "block";
+            kumudiv.style.display = "none";
+        } else if (checkBox.checked == true && slider.checked == true){ 
+            div.style.display = "none";
+            kumudiv.style.display = "block";
+        } else {
+            div.style.display = "none";
+            kumudiv.style.display = "none";
+        }
+    }
+    function showPers() {
+        // Get the checkboxs
+        var checkBox = document.getElementById("showPers");
+        var slider = document.getElementById("chartSwitch");
+        // Get the divs
+        var div = document.getElementById("Pers");
+        var kumudiv = document.getElementById("KumuPers");
+        // If the checkbox is checked, display the div and hide the Cumulative/Regular variant
+        if (checkBox.checked == true && slider.checked == false){
+            div.style.display = "block";
+            kumudiv.style.display = "none";
+        } else if (checkBox.checked == true && slider.checked == true){ 
+            div.style.display = "none";
+            kumudiv.style.display = "block";
+        } else {
+            div.style.display = "none";
+            kumudiv.style.display = "none";
+        }
+    }
+    function showTrafiknara() {
+        // Get the checkboxs
+        var checkBox = document.getElementById("showTrafiknara");
+        var slider = document.getElementById("chartSwitch");
+        // Get the divs
+        var div = document.getElementById("Trafiknara");
+        var kumudiv = document.getElementById("KumuTrafiknara");
+        // If the checkbox is checked, display the div and hide the Cumulative/Regular variant
+        if (checkBox.checked == true && slider.checked == false){
+            div.style.display = "block";
+            kumudiv.style.display = "none";
+        } else if (checkBox.checked == true && slider.checked == true){ 
+            div.style.display = "none";
+            kumudiv.style.display = "block";
+        } else {
+            div.style.display = "none";
+            kumudiv.style.display = "none";
+        }
+    }
+    function showTotal() {
+        // Get the checkboxs
+        var checkBox = document.getElementById("showTotal");
+        var slider = document.getElementById("chartSwitch");
+        // Get the divs
+        var div = document.getElementById("Total");
+        var kumudiv = document.getElementById("KumuTotal");
+        // If the checkbox is checked, display the div and hide the Cumulative/Regular variant
+        if (checkBox.checked == true && slider.checked == false){
+            div.style.display = "block";
+            kumudiv.style.display = "none";
+        } else if (checkBox.checked == true && slider.checked == true){ 
+            div.style.display = "none";
+            kumudiv.style.display = "block";
+        } else {
+            div.style.display = "none";
+            kumudiv.style.display = "none";
+        }
+    }
+</script>
+</html>

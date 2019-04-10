@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Loading in CSS library and font -->
+    <link rel="stylesheet" href="css/index.css" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300" rel="stylesheet" />
+    <title> Unicorn Co's restaurangsetablering </title>
+</head>
+<body>
+    <!-- Header container with a video as a background -->
+    <div class="header" id="c"> 
+        <video autoplay muted loop id="video">
+            <source src="img/header.mp4" type="video/mp4">
+        </video>   
+        <h1>Unicorn Co.</h1>
+    </div>
+    <!-- The navagation bar -->
+    <div id="navbar">
+        <a class="btn active" id="home" href="#Hem">Hem</a>
+        <a class="btn" id="karta" href="#Etableringsorter">Etableringsorter</a>
+        <a class="btn" id="graphs" href="#Restaurangindex">Restaurangindex</a>
+        <a class="btn" id="rapport" href="#Trendrapport">Trendrapport</a>
+        <a class="btn" id="sammanfattning" href="#Sammanfattning">Sammanfattning</a>
+        <img class="logo" src="IMG/logo.png">
+    </div>
+</body>
+<!-- Loading jQeury library so we can run the incoming jQuery scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    //jQeury-script that makes so that all the other .html files loads inside of the header container instead of opening. Makes so we still have our nav-bar down below.
+    $('#home').on('click', function() {
+    document.getElementById("c").innerHTML='<video autoplay muted loop id="video"><source src="img/header.mp4" type="video/mp4"></video><h1>Unicorn Co.</h1>';
+    })
+    $('#karta').on('click', function() {
+    document.getElementById("c").innerHTML='<div id="titlebar">Möjliga etableringsorter för Unicorn Co.</div><iframe class="karta" src="sverigekarta.html"></iframe>';
+    }) 
+    $('#graphs').on('click', function() {
+    document.getElementById("c").innerHTML='<div id="titlebar">Restaurangindex</div><object class="rapport-cont" data="graphs.html"></object>';
+    })
+    $('#rapport').on('click', function() {
+    document.getElementById("c").innerHTML='<div id="titlebar">Dryck- och mattrender 2019</div><object class="rapport-cont" data="rapport.html"></object>';
+    })
+    $('#sammanfattning').on('click', function() {
+    document.getElementById("c").innerHTML='<div id="titlebar">Sammanfattning och leverantörens rekommendationer</div><object class="rapport-cont" data="sammanfattning.html"></object>';
+    })  
+</script>
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("navbar");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
+</html>
